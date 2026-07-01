@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Asistencia - Lesley & Cristóbal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Monsieur+La+Doulaise&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fcfbf9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            background-image: radial-gradient(rgba(205, 164, 52, 0.03) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 50px 40px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            max-width: 550px;
+            width: 100%;
+            border: 1px solid #eae6dc;
+            position: relative;
+        }
+        /* Detalles botánicos sutiles en las esquinas inspirados en la imagen */
+        .form-container::before {
+            content: '🌿';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            opacity: 0.2;
+            font-size: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-family: 'Monsieur La Doulaise', cursive;
+            color: #bfa15f; /* Dorado sutil */
+            font-size: 58px;
+            margin: 0 0 5px 0;
+            font-weight: 400;
+        }
+        h2 {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            font-size: 24px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            color: #222;
+            text-transform: uppercase;
+        }
+        .deadline {
+            text-align: center;
+            font-size: 12px;
+            color: #8a8273;
+            font-style: italic;
+            margin-bottom: 40px;
+            letter-spacing: 0.5px;
+        }
+        .section-divider {
+            border-top: 1px dashed #d1c9b8;
+            margin: 30px 0;
+            padding-top: 20px;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            color: #222;
+            margin-bottom: 15px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dcd7cc;
+            border-radius: 2px;
+            font-size: 15px;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #faf9f6;
+            transition: all 0.3s;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #bfa15f;
+            background-color: #fff;
+        }
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 8px;
+        }
+        .radio-item {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #444;
+            cursor: pointer;
+            font-weight: 400;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+        .radio-item input[type="radio"] {
+            margin-right: 12px;
+            transform: scale(1.1);
+            accent-color: #bfa15f;
+        }
+        .restriccion-input {
+            margin-top: 10px;
+            padding-left: 10px;
+            border-left: 2px solid #bfa15f;
+        }
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px dashed #bfa15f;
+            color: #bfa15f;
+            padding: 10px 15px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 2px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover {
+            background-color: #fcfaf5;
+            border-style: solid;
+        }
+        .submit-btn {
+            width: 100%;
+            background-color: #2c2924;
+            color: #fff;
+            border: none;
+            padding: 16px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 2px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #bfa15f;
+        }
+        .hidden {
+            display: none;
+        }
+        .acompanante-item {
+            background-color: #fbfbfa;
+            padding: 20px;
+            border: 1px solid #eae6dc;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .btn-eliminar {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #cc0000;
+            cursor: pointer;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>¿Vendrás?</h1>
+        <h2>Por favor, avísanos</h2>
+        <div class="deadline">Plazo máximo de confirmación hasta el 15 de agosto 2026</div>
+
+        <form id="rsvpForm">
+            <div class="form-group">
+                <label for="nombreInvitado">Nombre de invitado</label>
+                <input type="text" id="nombreInvitado" name="nombreInvitado" required placeholder="Ej: Luis Crespo">
+            </div>
+
+            <div class="form-group">
+                <label>¿Asistirás?</label>
+                <div class="radio-group">
+                    <label class="radio-item">
+                        <input type="radio" name="asistencia" value="si" required onchange="toggleDetallesTitular()"> Acepto con gusto la invitación.
+                    </label>
+                    <label class="radio-item">
+                        <input type="radio" name="asistencia" value="no" onchange="toggleDetallesTitular()"> Lamentablemente no podré asistir.
+                    </label>
+                </div>
+            </div>
+
+            <div id="detallesTitular" class="hidden">
+                <div class="form-group">
+                    <label>Menú</label>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="menuTitular" value="tradicional" onchange="toggleRestriccion('Titular')"> Tradicional</label>
+                        <label class="radio-item"><input type="radio" name="menuTitular" value="vegetariano" onchange="toggleRestriccion('Titular')"> Vegetariano</label>
+                        <label class="radio-item"><input type="radio" name="menuTitular" value="restriccion" onchange="toggleRestriccion('Titular')"> Restricción alimentaria</label>
+                    </div>
+                    <div id="restriccionTitularContainer" class="restriccion-input hidden">
+                        <input type="text" id="restriccionTitular" name="restriccionTitular" placeholder="Indique qué alimentos no puede consumir">
+                    </div>
+                </div>
+
+                <div class="section-divider">
+                    <div class="section-title">Si fuiste invitado con acompañante o familia, ingresa:</div>
+                    <div id="contenedorAcompanantes"></div>
+                    <button type="button" class="btn-secondary" onclick="agregarAcompanante()">+ Agregar acompañante / familiar</button>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Enviar Confirmación</button>
+        </form>
+    </div>
+
+    <script>
+        let contadorAcompanantes = 0;
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyb9IQ3xNkXyXsgnjQpX7esQ6nEqLf26HGB9KhVn8pY6bj4QB25gl9dR9Ov_pVx9fnz/exec";
+
+        function toggleDetallesTitular() {
+            const asistencia = document.querySelector('input[name="asistencia"]:checked').value;
+            const detallesDiv = document.getElementById('detallesTitular');
+            const menuInputs = document.querySelectorAll('input[name="menuTitular"]');
+            
+            if (asistencia === 'si') {
+                detallesDiv.classList.remove('hidden');
+                menuInputs.forEach(input => input.setAttribute('required', 'true'));
+            } else {
+                detallesDiv.classList.add('hidden');
+                menuInputs.forEach(input => input.removeAttribute('required'));
+                document.getElementById('contenedorAcompanantes').innerHTML = '';
+                contadorAcompanantes = 0;
+            }
+        }
+
+        function toggleRestriccion(id) {
+            const radioRestriccion = document.querySelector(`input[name="menu${id}"][value="restriccion"]`);
+            const container = document.getElementById(`restriccion${id}Container`);
+            const inputField = document.getElementById(`restriccion${id}`);
+
+            if (radioRestriccion && radioRestriccion.checked) {
+                container.classList.remove('hidden');
+                inputField.setAttribute('required', 'true');
+            } else {
+                container.classList.add('hidden');
+                inputField.removeAttribute('required');
+                inputField.value = '';
+            }
+        }
+
+        function agregarAcompanante() {
+            contadorAcompanantes++;
+            const idActual = contadorAcompanantes;
+            
+            const div = document.createElement('div');
+            div.className = 'acompanante-item';
+            div.id = `acompananteRow_${idActual}`;
+            
+            div.innerHTML = `
+                <button type="button" class="btn-eliminar" onclick="eliminarAcompanante(${idActual})">✕ Quitar</button>
+                <div class="form-group">
+                    <label>Nombre acompañante / familiar</label>
+                    <input type="text" name="nombreAcom_${idActual}" required placeholder="Nombre completo">
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                    <label>Menú</label>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="menuAcom_${idActual}" value="tradicional" required onchange="toggleRestriccion('Acom_${idActual}')"> Tradicional</label>
+                        <label class="radio-item"><input type="radio" name="menuAcom_${idActual}" value="vegetariano" onchange="toggleRestriccion('Acom_${idActual}')"> Vegetariano</label>
+                        <label class="radio-item"><input type="radio" name="menuAcom_${idActual}" value="restriccion" onchange="toggleRestriccion('Acom_${idActual}')"> Restricción alimentaria</label>
+                    </div>
+                    <div id="restriccionAcom_${idActual}Container" class="restriccion-input hidden">
+                        <input type="text" id="restriccionAcom_${idActual}" name="restriccionAcom_${idActual}" placeholder="Indique qué alimentos no puede consumir">
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('contenedorAcompanantes').appendChild(div);
+        }
+
+        function eliminarAcompanante(id) {
+            const elemento = document.getElementById(`acompananteRow_${id}`);
+            if (elemento) {
+                elemento.remove();
+            }
+        }
+
+        // --- ENVIAR DATOS POR AJAX A GOOGLE SHEETS ---
+        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btnEnviar = document.querySelector('.submit-btn');
+            btnEnviar.innerText = "Enviando confirmación...";
+            btnEnviar.disabled = true;
+
+            const nombreInvitado = document.getElementById('nombreInvitado').value;
+            const asistencia = document.querySelector('input[name="asistencia"]:checked').value;
+            
+            let payload = {
+                nombreInvitado: nombreInvitado,
+                asistencia: asistencia,
+                menuTitular: asistencia === 'si' ? document.querySelector('input[name="menuTitular"]:checked').value : 'no_asiste',
+                restriccionTitular: asistencia === 'si' ? document.getElementById('restriccionTitular').value : '',
+                acompanantes: []
+            };
+
+            if (asistencia === 'si') {
+                const filasAcompanantes = document.querySelectorAll('.acompanante-item');
+                filasAcompanantes.forEach(fila => {
+                    const id = fila.id.split('_')[1];
+                    const nombreAcom = fila.querySelector(`input[name="nombreAcom_${id}"]`).value;
+                    const menuAcom = fila.querySelector(`input[name="menuAcom_${id}"]:checked`).value;
+                    const restriccionAcom = fila.querySelector(`input[name="restriccionAcom_${id}"]`).value;
+                    
+                    payload.acompanantes.push({
+                        nombre: nombreAcom,
+                        menu: menuAcom,
+                        restriccion: restriccionAcom
+                    });
+                });
+            }
+
+            fetch(WEB_APP_URL, {
+                method: 'POST',
+                mode: 'no-cors', 
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(() => {
+                alert("¡Muchas gracias! Tu confirmación ha sido registrada.");
+                document.getElementById('rsvpForm').reset();
+                document.getElementById('detallesTitular').classList.add('hidden');
+                btnEnviar.innerText = "Enviar Confirmación";
+                btnEnviar.disabled = false;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Hubo un problema al enviar los datos. Inténtalo de nuevo.");
+                btnEnviar.innerText = "Enviar Confirmación";
+                btnEnviar.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
